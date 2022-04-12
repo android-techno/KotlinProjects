@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+    <data>
+        <variable
+            name="mainactivityViewModel"
+            type="com.example.mycompletemvvmproject.viewmodel.MainActivityViewModel"/>
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context=".MainActivity">
+        <EditText
+            android:id="@+id/edittext"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@={mainactivityViewModel.title}"
+            android:textColor="@color/teal_700"
+            android:layout_margin="20dp"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/textview"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@{mainactivityViewModel.title}"
+            android:textColor="@color/teal_700"
+            app:layout_constraintTop_toBottomOf="@+id/edittext"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintBottom_toTopOf="@+id/clear_text"/>
+
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/clear_text"
+            android:layout_centerHorizontal="true"
+            android:onClick="@{() -> mainactivityViewModel.clearEditText()}"
+            android:text="@{mainactivityViewModel.clearText}"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintBottom_toTopOf="@+id/universityActivity"
+            app:layout_constraintTop_toTopOf="@+id/textview"/>
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/universityActivity"
+            android:layout_centerHorizontal="true"
+            android:text="University Activity"
+            app:layout_constraintBottom_toTopOf="@id/countertext"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/clear_text"/>
+
+
+        <TextView
+            android:id="@+id/countertext"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="20dp"
+            android:text="@={mainactivityViewModel.incrementCount}"
+            android:textColor="@color/teal_700"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/count_btn"
+            android:layout_centerHorizontal="true"
+            android:text="increase counter"
+            android:onClick="@{()->mainactivityViewModel.increment()}"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/countertext"/>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>
